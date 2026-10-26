@@ -1,41 +1,35 @@
 
 # Line Following Robot Using Arduino Uno
 
-**EE 252L – Introduction to Embedded Systems**  
-Department of Electrical Engineering  
-Namal University, Mianwali, Pakistan
+An Arduino-based line-following robot developed using two IR sensors, an L298N motor driver, and DC motors.
+
+**Author: Muhammad Usman Shah**
 
 ## Project Overview
 
-This project implements an Arduino-based robot that follows a black line on a white surface.
+This project demonstrates a line-following robot that detects and follows a black path on a white surface.
 
-Two infrared (IR) sensors detect the line, while an L298N motor driver controls the movement of two DC motors. The Arduino processes sensor inputs and adjusts motor direction to keep the robot on the path.
+Two infrared (IR) sensors detect the surface, while an Arduino Uno controls the direction of two DC motors through an L298N motor driver.
 
-The project includes circuit design, Proteus simulation, Arduino programming, and hardware implementation.
-
-## Circuit Design
-
-The circuit connects two IR sensors and an L298N motor driver to an Arduino Uno.
-
-[View Circuit Diagram](Images/)
+The project includes Arduino programming, circuit design, Proteus simulation, and hardware implementation.
 
 ## Working Principle
 
-The IR sensors detect the surface beneath the robot:
+The IR sensors detect the surface underneath the robot:
 
 - **LOW:** White surface
 - **HIGH:** Black line
 
-The Arduino uses these signals to control the motors.
+The Arduino processes these signals and controls motor movement.
 
-| Right IR Sensor | Left IR Sensor | Robot Action |
-|-----------------|----------------|--------------|
-| LOW | LOW | Move forward |
-| HIGH | LOW | Turn right |
-| LOW | HIGH | Turn left |
+| Right Sensor | Left Sensor | Robot Movement |
+|--------------|-------------|----------------|
+| LOW | LOW | Move Forward |
+| HIGH | LOW | Turn Right |
+| LOW | HIGH | Turn Left |
 | HIGH | HIGH | Stop |
 
-During turning, one motor rotates in the opposite direction while the other continues forward.
+During turning, one motor reverses while the other moves forward.
 
 ## Hardware Components
 
@@ -43,13 +37,11 @@ During turning, one motor rotates in the opposite direction while the other cont
 - L298N Motor Driver
 - Two IR Sensors
 - Two DC Motors
-- Robot Wheels and Chassis
+- Wheels and Chassis
 - Jumper Wires and Switch
 - 7–12 V Power Supply
 
-[View Hardware Component Images](Images/)
-
-## Arduino Pin Connections
+## Arduino Pin Configuration
 
 | Component | Arduino Pin |
 |-----------|-------------|
@@ -60,82 +52,78 @@ During turning, one motor rotates in the opposite direction while the other cont
 | Left Motor Enable (PWM) | 5 |
 | Left Motor Inputs | 9, 10 |
 
-## Software and Tools
+## Tools and Technologies
 
 - Arduino IDE
-- Embedded C++
-- Proteus Design Suite
+- Arduino C/C++
+- Proteus
+- Digital Sensors
+- Motor Control
 
-## Project Files
+## Project Materials
 
-| Material | Link |
-|----------|------|
-| Arduino Source Code | [View Code](Code/line_following_robot/) |
-| Project Report | [View Report](Report/) |
-| Project Results | [View Results](Results/) |
-| Circuit Diagram | [View Images](Images/) |
-| Hardware Components | [View Components](Images/) |
-| Proteus Simulation | [View Simulation](Images/) |
-| Robot Test Path | [View Test Path](Images/) |
+The repository contains:
+
+| Material | Description |
+|----------|-------------|
+| Arduino Source Code | Robot control program (.ino) |
+| Project Report | Circuit design and hardware implementation |
+| Project Results | Simulation and experimental results |
+| Circuit Diagram | Arduino, sensors, and motor driver connections |
+| Proteus Circuit | Circuit simulation |
+| Path Followed | Robot testing path |
+| Component Images | Images of the hardware components |
+
+**[Browse Project Files](https://github.com/Muhammad-Usman-Shah/Line-Following-Robot-Arduino)**
 
 ## How to Run
 
-1. Install the Arduino IDE.
-2. Download the Arduino source code.
-3. Open `line_following_robot.ino` in Arduino IDE.
-4. Connect the components according to the circuit diagram and pin connections.
-5. Select **Arduino Uno** as the board.
+1. Install Arduino IDE.
+2. Download the Arduino source code from this repository.
+3. Open `line_following_robot.ino`.
+4. Connect the components according to the circuit diagram.
+5. Select Arduino Uno as the board.
 6. Select the correct communication port.
-7. Upload the code to the Arduino.
-8. Place the robot on the black-line path.
-9. Switch on the power supply.
+7. Upload the program.
+8. Place the robot on the black-line track.
+9. Turn on the power supply.
 
 ## Simulation and Results
 
+### Circuit Design
+
+The circuit connects the Arduino Uno with two IR sensors and an L298N motor driver.
+
 ### Proteus Simulation
 
-The motor control circuit was designed and simulated in Proteus.
+The motor control circuit was designed and simulated using Proteus.
 
-[View Proteus Circuit](Images/)
+### Hardware Testing
 
-### Path Followed
+The robot was tested on a black-line track. The IR sensors detected the surface, and the Arduino controlled motor movements according to the programmed logic.
 
-The robot was tested on a black-line path containing turns.
-
-[View Robot Test Path](Images/)
-
-The Arduino controls the two motors according to the IR sensor readings, allowing the robot to follow the line.
-
-Detailed circuit diagrams and experimental results are provided in the project report and results document.
+The complete circuit, simulation outputs, and followed path are included in the repository files.
 
 ## Technical Notes
 
-- The Arduino code modifies the Timer 0 prescaler to adjust motor PWM behaviour.
-- Changing Timer 0 settings affects the timing of `delay()` and `millis()`.
-- IR sensor thresholds may require adjustment under different lighting conditions.
-- Although the report mentions four IR sensors and an LCD in some sections, the implemented circuit and code use two IR sensors without an LCD.
+- The code modifies the Timer 0 prescaler for motor PWM control.
+- Modifying Timer 0 affects Arduino timing functions such as `delay()` and `millis()`.
+- IR sensor sensitivity may require adjustment under different lighting conditions.
+- The implemented design uses two IR sensors and does not include an LCD.
 
 ## Limitations
 
-- Sensor readings depend on surface contrast and lighting.
-- The IR sensor thresholds may need manual adjustment.
-- The robot follows a predefined path and does not perform autonomous route planning.
+- Sensor performance depends on lighting and surface contrast.
+- Manual sensor calibration may be required.
+- The robot follows a predefined line rather than planning routes independently.
 
-## Possible Improvements
+## Future Improvements
 
-- PID-based motor speed control
-- Additional IR sensors for improved tracking
+- PID-based speed control
+- Additional IR sensors
 - Automatic sensor calibration
-- Improved performance on sharp turns
+- Improved turning and path tracking
 
 ## Author
 
 **Muhammad Usman Shah**
-
-**Course:** EE 252L – Introduction to Embedded Systems
-
-**Instructors:**
-- Engr. Nureen Shoukat
-- Engr. Misbah Batool
-
-**Institution:** Namal University, Mianwali, Pakistan
